@@ -14,3 +14,30 @@ header{height:56px;border:0;padding:0 16px;position:relative;z-index:2;gap:15px}
 @media(max-width:720px){body{padding:24px 12px;background:linear-gradient(160deg,#699cf0,#a7cc86 60%,#d4f635);background-attachment:fixed}.shell{padding:10px 12px 0}header{height:47px;padding:0 10px}header .logo{font-size:23px;padding-right:10px;margin-left:-10px}header .logo:after{width:25px}.account{font-size:9px;max-width:145px}.reference-hero{display:block;min-height:450px;margin:0;padding:37px 20px 125px;border-radius:0 10px 14px 10px}.reference-hero .eyebrow{font-size:7px;letter-spacing:.5px}.reference-hero h1{font-size:clamp(31px,8.8vw,57px);max-width:100%;letter-spacing:-1.9px;line-height:.96;margin:20px 0}.reference-hero p{font-size:10px;line-height:1.55}.reference-star{width:105px;height:105px;top:188px;right:15px}.reference-star b{font-size:29px;letter-spacing:-2px}.reference-star span{font-size:5px}.genre-stamps{left:15px;right:15px;bottom:78px;gap:9px;justify-content:flex-start}.genre-stamps a{padding:10px;font-size:8px}.genre-stamps a:nth-child(2){transform:rotate(9deg) translateY(-11px)}.genre-stamps a:nth-child(3){transform:rotate(-12deg) translateY(6px)}.hero-create{left:13px;bottom:-21px;font-size:10px;padding:15px 13px}.hero-create span{font-size:18px;margin-left:12px}.hero-create small{font-size:7px}.hero-watch{font-size:8px;right:12px;bottom:12px;gap:7px}.hero-watch span{font-size:20px}.reference-hero:after{right:95px;width:110px;height:35px}.editorial-intro{padding:73px 0 32px}.mini-star{width:46px;height:46px;margin-bottom:21px}.editorial-intro h2{font-size:clamp(14px,3.6vw,25px);letter-spacing:-.5px}.editorial-intro p{font-size:8px;line-height:1.5;padding:0 15px}.catalog-toolbar{margin-top:0;gap:13px}.filters{gap:5px}.filters button{padding:8px 12px;font-size:9px}.catalog-note{font-size:8px}.game-cards{grid-template-columns:1fr 1fr;gap:11px}.game-card{padding:17px 13px 23px;min-height:265px;clip-path:polygon(0 0,100% 0,100% calc(100% - 27px),calc(100% - 27px) 100%,0 100%);border-radius:10px 10px 0 10px}.game-card:nth-child(3){grid-column:1}.game-card:nth-child(4){grid-column:2}.editorial-number{font-size:37px;margin-bottom:23px;letter-spacing:-2px}.card-picture{width:40px;height:40px;top:18px;right:10px}.card-picture .game-art{height:40px}.card-picture .pixel-title{font-size:17px}.card-add{width:19px;height:19px;font-size:12px;right:0;bottom:0}.card-caption h3,.builder-card h3{font-size:14px;letter-spacing:-.4px;max-width:100%;margin-bottom:9px}.card-caption p,.builder-card p{font-size:8px;margin-bottom:12px}.card-caption>div{font-size:7px;line-height:1.6}.card-caption b{font-size:11px;margin-top:9px}.card-caption{padding:0}.builder-star{font-size:41px;right:10px;top:17px}.builder-card button{font-size:8px;padding:7px}.how{padding-top:25px}.section-top h2{font-size:23px}.steps{gap:10px}.step{min-height:190px}.price-grid{gap:12px}.end-banner>span{font-size:18px}footer .logo{font-size:22px}.catalog-footer{font-size:8px}.catalog-footer button{font-size:9px}}
 body{background-attachment:scroll}
 @media(min-width:721px){.editorial-intro h2{transform:scaleX(1.08);font-weight:900;line-height:.98}}
+/* Motion keeps the editorial shapes and typography in place. */
+.reading-progress{position:fixed;inset:0 0 auto;height:3px;background:#9760eb;transform:scaleX(0);transform-origin:left;pointer-events:none;z-index:110}
+.motion-toggle{border-bottom:1px dashed #737373;padding:3px 0;font-size:10px;white-space:nowrap}
+.motion-on .reference-star{animation:star-drift 7s ease-in-out infinite}
+.motion-on .mini-star{animation:star-turn 30s linear infinite}
+.motion-on .genre-stamps a{transition:transform .35s cubic-bezier(.2,.7,.2,1),background .25s,border-color .25s}
+.motion-on .genre-stamps a:hover,.motion-on .genre-stamps a:focus-visible{transform:rotate(0) translateY(-7px);background:#d0f437;border-color:#202020}
+.motion-on .game-card,.motion-on .price-card{transition:transform .3s ease,background .25s,border-color .25s;transform:perspective(900px) rotateX(var(--tilt-x,0deg)) rotateY(var(--tilt-y,0deg))}
+.motion-on .card-picture{transition:transform .4s cubic-bezier(.2,.7,.2,1)}
+.motion-on .card-add{transition:transform .25s,background .25s}
+.motion-on .card-add:hover{transform:rotate(45deg)}
+.motion-on .card-add.chosen{animation:selection-pop .35s ease-out}
+.motion-on .hero-create{transition:transform .3s,box-shadow .3s}
+.motion-on .hero-create:hover,.motion-on .hero-create:focus-visible{transform:rotate(-1deg) translateY(-5px);box-shadow:0 9px 0 #20202018}
+.motion-on .hero-watch span,.motion-on .btn span{display:inline-block;transition:transform .25s}
+.motion-on .hero-watch:hover span,.motion-on .btn:hover span{transform:translate(3px,-3px)}
+.motion-on .modal{animation:modal-enter .25s cubic-bezier(.2,.7,.2,1)}
+.motion-on .wizard-steps .current{animation:selection-pop .3s ease-out}
+.confetti{position:fixed;inset:0;pointer-events:none;z-index:101;overflow:hidden}
+.confetti i{position:absolute;top:15%;width:9px;height:15px;border-radius:1px}
+@keyframes star-drift{0%,100%{transform:translateY(0) rotate(12deg)}50%{transform:translateY(-9px) rotate(18deg)}}
+@keyframes star-turn{to{rotate:360deg}}
+@keyframes selection-pop{0%{scale:.85}65%{scale:1.06}100%{scale:1}}
+@keyframes modal-enter{from{opacity:0;translate:0 12px;scale:.98}to{opacity:1;translate:0 0;scale:1}}
+@media(hover:hover) and (pointer:fine){.motion-on .game-card:hover{transform:perspective(900px) translateY(-5px) rotateX(var(--tilt-x,0deg)) rotateY(var(--tilt-y,0deg))}.motion-on .game-card:hover .card-picture{transform:rotate(-5deg) scale(1.08)}.motion-on .price-card:hover{border-color:#d0f437;transform:perspective(900px) translateY(-5px) rotateX(var(--tilt-x,0deg)) rotateY(var(--tilt-y,0deg))}}
+@media(max-width:720px){footer .motion-toggle{font-size:9px}.motion-on .reference-star{animation-duration:9s}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.motion-on .game-card,.motion-on .price-card{transform:none!important}.reading-progress,.confetti{display:none}}
